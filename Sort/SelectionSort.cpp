@@ -14,6 +14,7 @@ void read_data(const char filename[], std::vector<recordtype>* data) {
 	std::ifstream input(filename);
 	if (input.fail()) {
 		std::cout << "Cannot open file!!" << std::endl;
+		input.close();
 		return;
 	}
 	while (!input.eof()) {
@@ -21,6 +22,7 @@ void read_data(const char filename[], std::vector<recordtype>* data) {
 		input >> tmp.key >> tmp.otherfields;
 		data->push_back(tmp);
 	}
+	input.close();
 }
 
 void print_data(std::vector<recordtype> data) {
